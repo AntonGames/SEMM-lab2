@@ -1,0 +1,77 @@
+-- ==========================================================
+-- Invalid objects: 5+ class objects that violate invariants
+-- ==========================================================
+
+-- Setup: a valid library for linking objects
+!create testLib : Library
+!set testLib.name := 'Test Library'
+!set testLib.maxBooksPerMember := 5
+
+-- Invalid Object 1: Book with EMPTY TITLE
+-- Violates: titleNotEmpty
+!create badBook1 : Book
+!set badBook1.title := ''
+!set badBook1.author := 'Unknown Author'
+!set badBook1.isbn := '111-1111111'
+!set badBook1.year := 2000
+!set badBook1.genre := #Fiction
+!set badBook1.available := true
+!insert (testLib, badBook1) into LibraryBooks
+
+-- Invalid Object 2: Member UNDERAGE (age < 16)
+-- Violates: validAge, memberInfoTuple
+!create badMember1 : Member
+!set badMember1.name := 'Young Person'
+!set badMember1.age := 12
+!set badMember1.email := 'young@email.com'
+!set badMember1.active := false
+!set badMember1.maxLoans := 3
+!insert (testLib, badMember1) into LibraryMembers
+
+-- Invalid Object 3: Book with EMPTY ISBN
+-- Violates: isbnNotEmpty
+!create badBook2 : Book
+!set badBook2.title := 'Valid Title'
+!set badBook2.author := 'Valid Author'
+!set badBook2.isbn := ''
+!set badBook2.year := 2000
+!set badBook2.genre := #Science
+!set badBook2.available := true
+!insert (testLib, badBook2) into LibraryBooks
+
+-- Invalid Object 4: Member with EMPTY EMAIL (and active)
+-- Violates: emailNotEmpty; also causes Library to violate activeMembersHaveEmail
+!create badMember2 : Member
+!set badMember2.name := 'No Email Person'
+!set badMember2.age := 25
+!set badMember2.email := ''
+!set badMember2.active := true
+!set badMember2.maxLoans := 3
+!insert (testLib, badMember2) into LibraryMembers
+
+-- Invalid Object 5: Book with INVALID YEAR (future)
+-- Violates: validYear
+!create badBook3 : Book
+!set badBook3.title := 'Future Book'
+!set badBook3.author := 'Future Author'
+!set badBook3.isbn := '333-3333333'
+!set badBook3.year := 3000
+!set badBook3.genre := #Art
+!set badBook3.available := true
+!insert (testLib, badBook3) into LibraryBooks
+
+-- Invalid Object 6: Member with maxLoans out of range (0)
+-- Violates: maxLoansPositive
+!create badMember3 : Member
+!set badMember3.name := 'Zero Loans'
+!set badMember3.age := 20
+!set badMember3.email := 'zero@email.com'
+!set badMember3.active := false
+!set badMember3.maxLoans := 0
+!insert (testLib, badMember3) into LibraryMembers
+
+-- Invalid Object 7: Library with EMPTY NAME
+-- Violates: nameNotEmpty
+!create badLib : Library
+!set badLib.name := ''
+!set badLib.maxBooksPerMember := 5
