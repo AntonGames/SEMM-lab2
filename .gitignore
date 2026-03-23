@@ -1,0 +1,9 @@
+# USE tool (downloaded binary)
+use-tool/
+use-*.zip
+
+# Lecture materials
+lectures/
+
+# Temp files
+*.cmd
