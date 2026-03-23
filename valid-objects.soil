@@ -1,0 +1,95 @@
+-- ==========================================================
+-- Valid objects: 10+ class objects satisfying ALL invariants
+-- ==========================================================
+
+-- Create the library
+!create lib : Library
+!set lib.name := 'Central Library'
+!set lib.maxBooksPerMember := 5
+
+-- Create books (4 books)
+!create book1 : Book
+!set book1.title := 'War and Peace'
+!set book1.author := 'Leo Tolstoy'
+!set book1.isbn := '978-0-14-044793-4'
+!set book1.year := 1869
+!set book1.genre := #Fiction
+!set book1.available := true
+
+!create book2 : Book
+!set book2.title := 'A Brief History of Time'
+!set book2.author := 'Stephen Hawking'
+!set book2.isbn := '978-0-553-38016-3'
+!set book2.year := 1988
+!set book2.genre := #Science
+!set book2.available := true
+
+!create book3 : Book
+!set book3.title := 'The Art of War'
+!set book3.author := 'Sun Tzu'
+!set book3.isbn := '978-1-59030-225-9'
+!set book3.year := 1910
+!set book3.genre := #History
+!set book3.available := false
+
+!create book4 : Book
+!set book4.title := 'The Republic'
+!set book4.author := 'Plato'
+!set book4.isbn := '978-0-14-044914-3'
+!set book4.year := 1943
+!set book4.genre := #NonFiction
+!set book4.available := true
+
+-- Create members (3 members)
+!create member1 : Member
+!set member1.name := 'Alice Johnson'
+!set member1.age := 25
+!set member1.email := 'alice@email.com'
+!set member1.active := true
+!set member1.maxLoans := 3
+
+!create member2 : Member
+!set member2.name := 'Bob Smith'
+!set member2.age := 30
+!set member2.email := 'bob@email.com'
+!set member2.active := true
+!set member2.maxLoans := 5
+
+!create member3 : Member
+!set member3.name := 'Carol White'
+!set member3.age := 45
+!set member3.email := 'carol@email.com'
+!set member3.active := false
+!set member3.maxLoans := 2
+
+-- Create loans (2 loans)
+!create loan1 : Loan
+!set loan1.borrowDate := '2026-01-15'
+!set loan1.dueDate := '2026-02-15'
+!set loan1.returned := false
+
+!create loan2 : Loan
+!set loan2.borrowDate := '2026-01-01'
+!set loan2.dueDate := '2026-02-01'
+!set loan2.returned := true
+
+-- Link library to books
+!insert (lib, book1) into LibraryBooks
+!insert (lib, book2) into LibraryBooks
+!insert (lib, book3) into LibraryBooks
+!insert (lib, book4) into LibraryBooks
+
+-- Link library to members
+!insert (lib, member1) into LibraryMembers
+!insert (lib, member2) into LibraryMembers
+!insert (lib, member3) into LibraryMembers
+
+-- Link member1 to loans
+!insert (member1, loan1) into MemberLoans
+!insert (member1, loan2) into MemberLoans
+
+-- Link loans to books
+-- loan1 (active) -> book3 (unavailable) : consistent with availableConsistency
+-- loan2 (returned) -> book1 (available) : consistent with availableConsistency
+!insert (loan1, book3) into LoanBook
+!insert (loan2, book1) into LoanBook
