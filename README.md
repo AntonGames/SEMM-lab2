@@ -73,23 +73,23 @@ classDiagram
 
 ## OCL Requirements Coverage
 
-| Requirement | Count | Status |
-|---|---|---|
-| Interrelated classes | 4 (Library, Book, Member, Loan) | ✅ |
-| Invariants (≥10) | 18 | ✅ |
-| Pre-conditions (≥10) | 17 | ✅ |
-| Post-conditions (≥10) | 18 | ✅ |
-| Post-conditions with `@pre` (≥5) | 8 | ✅ |
-| Invariants with collection operations (≥5) | 8 | ✅ |
-| Post-conditions with collection operations (≥5) | 6 | ✅ |
-| Different collection operations (≥5, incl. `collect`, `select`) | 10 (`select`, `collect`, `forAll`, `exists`, `isUnique`, `size`, `isEmpty`, `includes`, `asSet`, `flatten`) | ✅ |
-| Collection of collections (≥2) | 2 (`allLoansReferenceLibraryBooks`, `borrowedBooksInLibrary`) | ✅ |
-| Invariants with collection types (≥3) | 3 (`Bag(Book)`, `Set(Loan)`, `Set(Genre)`) | ✅ |
-| Local variables (≥3) | 5 | ✅ |
-| Queries (≥3, ≥2 with collections) | 4 (all use `select`) | ✅ |
-| Tuples (≥2) | 2 (`memberInfoTuple`, `loanDatesTuple`) | ✅ |
-| Valid objects (≥10) | 10 | ✅ |
-| Invalid objects (≥5) | 7 (9 invariant failures) | ✅ |
+| Requirement | Count |
+|---|---|
+| Interrelated classes | 4 (Library, Book, Member, Loan) |
+| Invariants (≥10) | 18 |
+| Pre-conditions (≥10) | 17 |
+| Post-conditions (≥10) | 18 |
+| Post-conditions with `@pre` (≥5) | 8 |
+| Invariants with collection operations (≥5) | 8 |
+| Post-conditions with collection operations (≥5) | 6 |
+| Different collection operations (≥5, incl. `collect`, `select`) | 10 (`select`, `collect`, `forAll`, `exists`, `isUnique`, `size`, `isEmpty`, `includes`, `asSet`, `flatten`) |
+| Collection of collections (≥2) | 2 (`allLoansReferenceLibraryBooks`, `borrowedBooksInLibrary`) |
+| Invariants with collection types (≥3) | 3 (`Bag(Book)`, `Set(Loan)`, `Set(Genre)`) |
+| Local variables (≥3) | 5 |
+| Queries (≥3, ≥2 with collections) | 4 (all use `select`) |
+| Tuples (≥2) | 2 (`memberInfoTuple`, `loanDatesTuple`) |
+| Valid objects (≥10) | 10 |
+| Invalid objects (≥5) | 7 (9 invariant failures) |
 
 ## How to Run
 
