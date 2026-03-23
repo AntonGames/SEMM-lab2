@@ -129,3 +129,7 @@ classDiagram
 use-7.1.1/bin/use -nogui library.use
 ```
 Then type `open valid-objects.soil` and `check`.
+
+### VS Code syntax highlighting
+
+A local extension (`use-ocl-syntax/`) provides syntax highlighting for `.use` and `.soil` files. Copy it to `~/.vscode/extensions/use-ocl-syntax` and reload VS Code.

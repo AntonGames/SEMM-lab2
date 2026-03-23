@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "USE",
+  "scopeName": "source.use",
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#string" },
+    { "include": "#number" },
+    { "include": "#enum-literal" },
+    { "include": "#keyword-model" },
+    { "include": "#keyword-class" },
+    { "include": "#keyword-constraint" },
+    { "include": "#keyword-ocl" },
+    { "include": "#keyword-collection" },
+    { "include": "#keyword-type" },
+    { "include": "#keyword-bool" },
+    { "include": "#operator" }
+  ],
+  "repository": {
+    "comment": {
+      "match": "--.*$",
+      "name": "comment.line.double-dash.use"
+    },
+    "string": {
+      "begin": "'",
+      "end": "'",
+      "name": "string.quoted.single.use"
+    },
+    "number": {
+      "match": "\\b\\d+(\\.\\d+)?\\b",
+      "name": "constant.numeric.use"
+    },
+    "enum-literal": {
+      "match": "#\\w+",
+      "name": "constant.other.enum.use"
+    },
+    "keyword-model": {
+      "match": "\\b(model|class|enum|end|attributes|operations|association|between|role|constraints|abstract|aggregation|composition)\\b",
+      "name": "keyword.control.use"
+    },
+    "keyword-class": {
+      "match": "\\b(context|inv|pre|post|body|init|derive|let|in|if|then|else|endif)\\b",
+      "name": "keyword.other.ocl.use"
+    },
+    "keyword-constraint": {
+      "match": "\\b(self|result|@pre)\\b",
+      "name": "variable.language.use"
+    },
+    "keyword-ocl": {
+      "match": "->\\s*(select|collect|reject|forAll|exists|one|any|isUnique|sortedBy|iterate|includes|excludes|including|excluding|union|intersection|symmetricDifference|flatten|asSet|asBag|asSequence|asOrderedSet|isEmpty|notEmpty|size|sum|count|at|first|last|indexOf|append|prepend|insertAt|subSequence|subOrderedSet)",
+      "name": "support.function.collection.use"
+    },
+    "keyword-collection": {
+      "match": "\\b(Set|Bag|Sequence|OrderedSet|Collection|Tuple)\\b",
+      "name": "support.type.collection.use"
+    },
+    "keyword-type": {
+      "match": "\\b(String|Integer|Real|Boolean|OclAny|OclVoid)\\b",
+      "name": "support.type.primitive.use"
+    },
+    "keyword-bool": {
+      "match": "\\b(true|false|null|undefined)\\b",
+      "name": "constant.language.use"
+    },
+    "operator": {
+      "match": "\\b(and|or|not|implies|xor)\\b",
+      "name": "keyword.operator.logical.use"
+    }
+  }
+}

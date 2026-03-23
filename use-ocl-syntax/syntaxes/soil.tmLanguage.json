@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "SOIL",
+  "scopeName": "source.soil",
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#string" },
+    { "include": "#number" },
+    { "include": "#enum-literal" },
+    { "include": "#command" },
+    { "include": "#keyword" },
+    { "include": "#keyword-bool" },
+    { "include": "#operator" }
+  ],
+  "repository": {
+    "comment": {
+      "match": "--.*$",
+      "name": "comment.line.double-dash.soil"
+    },
+    "string": {
+      "begin": "'",
+      "end": "'",
+      "name": "string.quoted.single.soil"
+    },
+    "number": {
+      "match": "\\b\\d+(\\.\\d+)?\\b",
+      "name": "constant.numeric.soil"
+    },
+    "enum-literal": {
+      "match": "#\\w+",
+      "name": "constant.other.enum.soil"
+    },
+    "command": {
+      "match": "!(create|destroy|set|insert|delete|openter|opexit|new|let)",
+      "name": "keyword.control.command.soil"
+    },
+    "keyword": {
+      "match": "\\b(into|between|check|open|reset|quit|info|state)\\b",
+      "name": "keyword.other.soil"
+    },
+    "keyword-bool": {
+      "match": "\\b(true|false|null|undefined)\\b",
+      "name": "constant.language.soil"
+    },
+    "operator": {
+      "match": ":=",
+      "name": "keyword.operator.assignment.soil"
+    }
+  }
+}

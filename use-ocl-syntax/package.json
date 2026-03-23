@@ -1,0 +1,36 @@
+{
+  "name": "use-ocl-syntax",
+  "displayName": "USE/OCL Syntax Highlighting",
+  "description": "Syntax highlighting for USE (.use) and SOIL (.soil) files",
+  "version": "0.1.0",
+  "engines": { "vscode": "^1.60.0" },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "use",
+        "aliases": ["USE", "use"],
+        "extensions": [".use"],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "soil",
+        "aliases": ["SOIL", "soil"],
+        "extensions": [".soil"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "use",
+        "scopeName": "source.use",
+        "path": "./syntaxes/use.tmLanguage.json"
+      },
+      {
+        "language": "soil",
+        "scopeName": "source.soil",
+        "path": "./syntaxes/soil.tmLanguage.json"
+      }
+    ]
+  }
+}
