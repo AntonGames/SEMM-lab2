@@ -102,7 +102,7 @@ classDiagram
 
 2. **Launch USE GUI:**
    ```
-   use-7.1.1/bin/use library.use
+   .\use-tool\use-7.1.1\bin\use.bat library.use
    ```
 
 3. **Load valid objects** (from USE shell or GUI File → Open):
