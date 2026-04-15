@@ -126,7 +126,7 @@ classDiagram
 
 ### Non-GUI mode
 ```
-use-7.1.1/bin/use -nogui library.use
+.\use-tool\use-7.1.1\bin\use.bat -nogui library.use
 ```
 Then type `open valid-objects.soil` and `check`.
 
