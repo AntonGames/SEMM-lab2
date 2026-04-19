@@ -24,6 +24,10 @@ operations
   -- Query: counts books that are currently available [select, size]
   countAvailableBooks() : Integer =
     self.books->select(b | b.available)->size()
+  -- Query: counts members older than 20 who borrowed a book with a given title
+  -- [select, exists, size]
+  countMembersOver20WithBook(title : String) : Integer =
+    self.members->select(m | m.age > 20 and m.loans->exists(l | l.book.title = title))->size()
 end
 
 -- Book: represents a book in the library
@@ -141,9 +145,10 @@ context Member
     self.maxLoans > 0 and self.maxLoans <= 10
 
 context Member
-  -- Number of active (not returned) loans must not exceed the limit
+  -- Invariant form of pre-condition withinLoanLimit:
+  -- active loans must not exceed the member's loan limit
   -- [Collection operations: select, size]
-  inv activeLoansWithinLimit:
+  inv withinLoanLimitInvariant:
     self.loans->select(l | not l.returned)->size() <= self.maxLoans
 
 context Member
